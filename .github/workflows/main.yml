@@ -36,4 +36,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: kimhangg/lethikimhang-app:latest
+          tags: |
+            kimhangg/lethikimhang-app:latest
+            kimhangg/lethikimhang-app:${{ github.run_number }}
