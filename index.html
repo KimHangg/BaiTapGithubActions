@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Thị Kim Hằng - Portfolio Cá Nhân</title>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Tông màu cơ bản - Không dùng gradient */
+            --bg-color: #f9fafb;
+            /* Xám nhạt - nền trang */
+            --card-bg: #ffffff;
+            /* Trắng - nền thẻ */
+            --text-primary: #111827;
+            /* Đen nhạt / Xám đậm - văn bản chính */
+            --text-secondary: #4b5563;
+            /* Xám - văn bản phụ */
+            --accent-color: #000000;
+            /* Đen - màu nhấn thanh lịch */
+            --border-color: #e5e7eb;
+            /* Xám sáng - viền */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        /* Hero / Header Section */
+        .hero-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            background-color: var(--card-bg);
+            padding: 50px 40px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            /* Bóng đổ rất nhẹ */
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+        }
+
+        .avatar-container {
+            flex-shrink: 0;
+        }
+
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            /* Viền màu basic mỏng */
+        }
+
+        .hero-info {
+            flex-grow: 1;
+        }
+
+        .hero-info h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .role {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            color: var(--text-primary);
+            font-size: 18px;
+            text-decoration: none;
+            background-color: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+        }
+
+        /* Content Grid Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Timeline / History */
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 15px;
+        }
+
+        .timeline-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            font-style: italic;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Skills / Tags list */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: transparent;
+            color: var(--text-primary);
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Contact Details */
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .contact-list li i {
+            color: var(--text-secondary);
+            width: 25px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .bio {
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Hero Section: Thông tin chính -->
+        <div class="hero-section">
+            <div class="avatar-container">
+                <!-- Vẫn giữ cách load ảnh tự động từ local file avatar.jpg, 
+                     nếu ko có sẽ hiển thị ảnh fallback chữ KH màu Đen/Trắng -->
+                <img src="avatar.jpg" alt="Lê Thị Kim Hằng" class="avatar"
+                    onerror="this.src='https://ui-avatars.com/api/?name=KH&background=000&color=fff&size=160'">
+            </div>
+            <div class="hero-info">
+                <h1>Lê Thị Kim Hằng</h1>
+                <div class="role">Sinh Viên Công Nghệ Thông Tin</div>
+                <p class="bio">
+                    Xin chào! Tôi là Hằng, một người có niềm đam mê mạnh mẽ với lĩnh vực lập trình và công nghệ. Tôi
+                    thích giải quyết các vấn đề từ dễ đến mởi thông qua những dòng code mang tính thực tiễn cao. Phương
+                    châm làm việc của tôi là luôn tìm kiếm và học hỏi cái mới mỗi ngày với tư duy tối giản (minimalism)
+                    và đề cao sự hiệu quả.
+                </p>
+                <div class="social-links">
+                    <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Grid: Bố cục 2 cột -->
+        <div class="content-grid">
+
+            <!-- Cột trái: Học vấn / Kinh nghiệm -->
+            <div class="card">
+                <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Hành trình học tập</h2>
+                <div class="timeline-item">
+                    <div class="timeline-title">Đại học Hutech</div>
+                    <div class="timeline-subtitle">Cử nhân Công nghệ thông tin • 2021 - Nay</div>
+                    <div class="timeline-desc">Đang theo học chuyên ngành phần mềm. Có khả năng tiếp thu nhanh và đã
+                        tham gia nhiều dự án bài tập như ứng dụng Java Spring Boot (Môn Công Cụ).</div>
+                </div>
+                <!-- Có thể thêm nhiều timeline item ở đây -->
+                <br>
+                <div class="timeline-item">
+                    <div class="timeline-title">Chứng chỉ chuyên môn</div>
+                    <div class="timeline-subtitle">Bằng Ngoại Ngữ & IT Căn Bản • 2023</div>
+                    <div class="timeline-desc">Thường xuyên cập nhật trau dồi về lý thuyết và kiến thức về hệ thống &
+                        máy chủ như Docker.</div>
+                </div>
+            </div>
+
+            <!-- Cột phải: Thông tin liên hệ cơ bản -->
+            <div class="card">
+                <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Thông tin liên hệ</h2>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-envelope"></i> kimhang.dev@example.com</li>
+                    <li><i class="fa-solid fa-phone"></i> +84 123 456 789</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Tp. Hồ Chí Minh, Việt Nam</li>
+                    <li><i class="fa-solid fa-calendar-days"></i> 01 / 01 / 2003</li>
+                    <li><i class="fa-solid fa-globe"></i> github.com/lethikimhang</li>
+                </ul>
+            </div>
+
+            <!-- Dòng dưới: Kỹ năng chuyên môn -->
+            <div class="card full-width">
+                <h2 class="section-title"><i class="fa-solid fa-code"></i> Kiến thức & Kỹ năng</h2>
+                <div class="tag-list">
+                    <span class="tag">Thiết kế Web (HTML / CSS)</span>
+                    <span class="tag">JavaScript cơ bản</span>
+                    <span class="tag">Java / Spring Boot Framework</span>
+                    <span class="tag">Làm việc với Cơ sở dữ liệu (SQL, H2)</span>
+                    <span class="tag">Quản lý mã nguồn (Git / GitHub)</span>
+                    <span class="tag">Triển khai dự án với Docker</span>
+                    <span class="tag">Thiết kế phần mềm tối giản</span>
+                </div>
+            </div>
+
+            <!-- Dòng dưới: Sở thích -->
+            <div class="card full-width">
+                <h2 class="section-title"><i class="fa-solid fa-seedling"></i> Sở thích & Đam mê</h2>
+                <div class="tag-list">
+                    <span class="tag"><i class="fa-solid fa-book" style="margin-right: 5px;"></i> Đọc sách chuyên
+                        ngành</span>
+                    <span class="tag"><i class="fa-solid fa-music" style="margin-right: 5px;"></i> Nghe nhạc không lời /
+                        Lofi</span>
+                    <span class="tag"><i class="fa-solid fa-terminal" style="margin-right: 5px;"></i> Nghiên cứu & Lập
+                        trình lúc rảnh rỗi</span>
+                    <span class="tag"><i class="fa-solid fa-plane" style="margin-right: 5px;"></i> Du lịch trải
+                        nghiệm</span>
+                    <span class="tag"><i class="fa-solid fa-camera" style="margin-right: 5px;"></i> Chụp ảnh đường
+                        phố</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
